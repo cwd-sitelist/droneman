@@ -32,11 +32,7 @@ tl.to(".bg",{
   yPercent:-15
 },0);
  
-tl.to(".building",{
-  yPercent:-60,
-  scale:1.1
-},0);
- 
+
 /* 🔥 STEP 2: TOP TEXT HIDE */
 tl.to(".content1",{
   opacity:0,
@@ -55,9 +51,6 @@ tl.to(".clip-text",{
 },0.35);
  
 /* 🔥 STEP 5: BUILDING FADE */
-tl.to(".building",{
-  opacity:0
-},0.55);
  
 /* 🔥 STEP 6: TEXT EXIT */
 tl.to(".text-wrap",{

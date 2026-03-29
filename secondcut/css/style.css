@@ -88,7 +88,7 @@ align-items: center;
 
 /* CHANGE TEXT COLOR WHEN WHITE BG */
 .header.scrolled .nav a {
-  color: #111;
+  color: #000;
 }
 
 .header.scrolled .hamburger span {
@@ -161,7 +161,7 @@ position:relative;
   position: absolute;
   inset: 0;
   filter: brightness(0.29);
-  background: rgba(0,0,0,0.7);
+  background: rgb(0 0 0 / 42%);
   z-index: 0;
 }
 .hero-pin{
@@ -265,22 +265,28 @@ position:relative;
   display:flex;
   flex-direction:column;
   align-items:center;
+
   line-height:0.85;
   font-weight:900; 
-  background-image:url('../image/drone.png'); /* ✅ BUILDING */
-  background-size:cover;
-  background-position:50% 0%;
  
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
   -webkit-text-stroke:2px #fff;
  
   opacity:0;
 }
  
-.line1{ font-size:180px; padding-bottom: 30px;}
-.line2{ font-size:50px; letter-spacing:8px; }
+.line1{ font-size:180px; padding-bottom: 30px;   background-image:url('../image/parallex.jpg'); /* ✅ BUILDING */
+  background-size:cover;
+      background-position: 44% 42%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;}
+.line2{ font-size:50px; letter-spacing:8px;   background-image:url('../image/banner1.png'); /* ✅ BUILDING */
+  background-size:cover;
+  background-position:50% 0%; 
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;}
  
+
+
 
 /* Section -2  */
 

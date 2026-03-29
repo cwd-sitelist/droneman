@@ -2,100 +2,65 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   /* ================= HEADER SCROLL ================= */
-  const header = document.getElementById("header");
+const header = document.getElementById("header");
+const banner = document.querySelector(".hero"); // your banner section
 
-  if (header) {
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 50) {
-        header.classList.add("scrolled");
-      } else {
-        header.classList.remove("scrolled");
-      }
-    });
-  }
+if (header && banner) {
+  window.addEventListener("scroll", () => {
+    const bannerBottom = banner.offsetTop + banner.offsetHeight;
 
-  gsap.registerPlugin(ScrollTrigger);
- 
+    if (window.scrollY >= bannerBottom - 80) { 
+      // 80 = header height adjustment (optional)
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
+  });
+}
+
+ gsap.registerPlugin(ScrollTrigger);
+
+/* force render fix */
+gsap.set(".clip-text", { opacity: 0.001 });
+
 let tl = gsap.timeline({
-  scrollTrigger:{
-    trigger:".hero",
-    start:"top top",
-    end:"+=100%",
-    scrub:true,
-    pin:".hero-pin"
+  scrollTrigger: {
+    trigger: ".hero",
+    start: "top top",
+    end: "+=100%",
+    scrub: true,
+    pin: ".hero-pin"
   }
 });
- 
-/* 🔥 STEP 1: BG + BUILDING START */
-tl.to(".bg",{
-  scale:1.2,
-  yPercent:-15
-},0);
- 
 
-/* 🔥 STEP 2: TOP TEXT HIDE */
-tl.to(".content1",{
-  opacity:0,
-  y:-40
-},0.15);
- 
-/* 🔥 STEP 3: CLIP TEXT APPEAR */
-tl.to(".clip-text",{
-  opacity:1
-},0.35);
- 
-/* 🔥 STEP 4: IMAGE MOVE INSIDE TEXT */
-tl.to(".clip-text",{
-  backgroundPosition:"50% 100%",
-  ease:"none"
-},0.35);
- 
-/* 🔥 STEP 5: BUILDING FADE */
- 
-/* 🔥 STEP 6: TEXT EXIT */
-tl.to(".text-wrap",{
-  y:-150,
-  opacity:0
-},0.75);
- 
-/* ===================================== */
-/* 🔥 FINAL STEP: CLOUDS MOVE + SECTION REVEAL */
-/* ===================================== */
- 
-tl.to(".cloud1",{
-  y:-600,
-  x:-100,
-  opacity:0.9,
-  ease:"power1.out"
-},0.75);
- 
-tl.to(".cloud2",{
-  y:-600,
-  x:120,
-  opacity:0.9,
-  ease:"power1.out"
-},0.75);
- 
-/* CLOUD PARALLAX */
-gsap.to(".hero_cloud.left",{
-  x:120,
-  scrollTrigger:{
-    trigger:".hero",
-    start:"top top",
-    end:"bottom top",
-    scrub:1
-  }
-});
- 
-gsap.to(".hero_cloud.right",{
-  x:-120,
-  scrollTrigger:{
-    trigger:".hero",
-    start:"top top",
-    end:"bottom top",
-    scrub:1
-  }
-});
+/* 🔥 BG ZOOM */
+tl.to(".bg", {
+  scale: 1.2,
+  yPercent: -15
+}, 0);
+
+/* 🔥 HIDE FIRST TEXT */
+tl.to(".content1", {
+  opacity: 0,
+  y: -40
+}, 0.15);
+
+/* 🔥 SHOW CLIP TEXT */
+tl.to(".clip-text", {
+  opacity: 1
+}, 0.35);
+
+/* 🔥 IMAGE MOVE INSIDE TEXT */
+tl.to(".clip-text", {
+  backgroundPosition: "50% 100%",
+  ease: "none"
+}, 0.35);
+
+/* 🔥 EXIT TEXT */
+tl.to(".text-wrap", {
+  y: -150,
+  opacity: 0
+}, 0.75);
 
   /* ================= TEXT REVEAL ================= */
   gsap.registerPlugin(ScrollTrigger);
